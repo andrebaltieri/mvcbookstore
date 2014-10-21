@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MvcBookStore.Domain.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach (var book in Model)
+    {
+        <li>@book.Title</li>
+    }
+</ul>
