@@ -3,9 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My ASP.NET Application</title>
+    <title>MVC Book Store</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/content/css/themes/bootstrap-superhero.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-    @RenderBody()
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">MVC Book Store</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index", "Book")">Books</a></li>
+                    <li><a href="@Url.Action("Index", "Author")">Authors</a></li>
+                    <li><a href="@Url.Action("Index", "Library")">Library</a></li>
+                    <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" role="main">
+        <br />
+        <br /><br />
+
+        @RenderBody()
+    </div>
+
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>

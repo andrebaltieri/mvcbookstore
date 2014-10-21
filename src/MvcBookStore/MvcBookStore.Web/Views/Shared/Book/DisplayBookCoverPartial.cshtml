@@ -1,0 +1,11 @@
+﻿@model MvcBookStore.Domain.Book
+
+<div class="well col-md-3 text-center">
+    <h4>@Model.Title</h4>
+    <img src="@Model.Image" alt="@Model.Title" class="img-responsive img-thumbnail" width="134" /><br />
+    <div class="btn-group">
+        <a href="@Url.Action("Details", "Book", new { id = Model.Id })" class="btn btn-primary"><i class="fa fa-info"></i></a>
+        <a href="@Url.Action("Edit", "Book", new { id = Model.Id })" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+        <a href="@Url.Action("Remove", "Book", new { id = Model.Id })" class="btn btn-primary"><i class="fa fa-remove"></i></a>
+    </div>
+</div>

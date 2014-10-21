@@ -27,7 +27,7 @@ namespace MvcBookStore.Domain
         public string Name { get; protected set; }
         public string Bio { get; protected set; }
 
-        public IEnumerable<Book> Books
+        public ICollection<Book> Books
         {
             get { return _books; }
             protected set { _books = new List<Book>(value); }

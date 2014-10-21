@@ -3,11 +3,25 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<ul>
+<div class="jumbotron">
+    <div class="col-md-4">
+        <img src="~/content/img/bookmark-icon.png" class="img-responsive" />
+    </div>
+    <div class="col-md-8 clearfix">
+        <h1>Welcome to MVC Book Store</h1>
+        <p>
+            This is a sample application built using ASP.NET MVC, Entity Framework and SQL Server.
+        </p>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<hr />
+<h2>Best Sellers</h2>
+<ol class="list-unstyled">
     @foreach (var book in Model)
     {
-        <li>@book.Title</li>
+        <li>
+            @Html.Partial("Book/DisplayShortInfoPartial", book)
+        </li>
     }
-</ul>
+</ol>

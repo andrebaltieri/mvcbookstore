@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MvcBookStore.Domain.Book>
+@{
+    ViewBag.Title = "Books";
+}
+
+<div class="well">
+    <h2>
+        <i class="fa fa-bookmark"></i>
+        Books <small>management</small>
+        <a href="@Url.Action("Create","Book")" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> New Book</a>
+    </h2>
+</div>
+<hr />
+@foreach (var book in Model)
+{
+    @Html.Partial("Book/DisplayBookCoverPartial", book)
+}
