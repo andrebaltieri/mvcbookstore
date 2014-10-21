@@ -1,7 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
 using MvcBookStore.Data.DataContexts;
-using MvcBookStore.Data.Repositories;
-using MvcBookStore.Domain.Contracts;
 using MvcBookStore.Web.Controllers;
 using System;
 using System.Web;

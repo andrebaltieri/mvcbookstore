@@ -11,9 +11,9 @@ namespace MvcBookStore.Data.Repositories
     {
         private MvcBookStoreDataContext _db;
 
-        public AuthorRepository(MvcBookStoreDataContext dataContext)
+        public AuthorRepository(MvcBookStoreDataContext db)
         {
-            this._db = dataContext;
+            this._db = db;
         }
 
         public IList<Author> Get()

@@ -11,14 +11,14 @@ namespace MvcBookStore.Data.Repositories
     {
         private MvcBookStoreDataContext _db;
 
-        public BookRepository(MvcBookStoreDataContext dataContext)
+        public BookRepository(MvcBookStoreDataContext db)
         {
-            this._db = dataContext;
+            this._db = db;
         }
 
         public IList<Book> GetTopSales()
         {
-            return _db.Books.OrderBy(x => x.QuantitySaled).Take(10).ToList();
+            return _db.Books.OrderByDescending(x => x.QuantitySaled).Take(5).ToList();
         }
 
         public IList<Book> Get()
@@ -37,7 +37,7 @@ namespace MvcBookStore.Data.Repositories
                 _db.Books.Add(entity);
             else
                 _db.Entry<Book>(entity).State = EntityState.Modified;
-            
+
             _db.SaveChanges();
         }
 

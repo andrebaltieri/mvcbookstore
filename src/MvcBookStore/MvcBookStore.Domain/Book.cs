@@ -33,9 +33,9 @@ namespace MvcBookStore.Domain
         public string Title { get; protected set; }
         public DateTime ReleaseDate { get; protected set; }
         public string ISBN { get; protected set; }
-        public int QuantitySaled { get; set; }
-        public int QuantityOnHand { get; set; }
-        public string Image { get; set; }
+        public int QuantitySaled { get; protected set; }
+        public int QuantityOnHand { get; protected set; }
+        public string Image { get; protected set; }
 
         public ICollection<Author> Authors
         {

@@ -142,6 +142,7 @@
     <Content Include="Views\Shared\Book\DisplayShortInfoPartial.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Shared\Book\DisplayBookCoverPartial.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -174,8 +175,15 @@
       <Project>{2e3dd60a-66a8-4288-9c98-1b5249ad9f0f}</Project>
       <Name>MvcBookStore.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MvcBookStore.Service\MvcBookStore.Service.csproj">
+      <Project>{2085ad2a-2d1b-441a-bf4e-a44115ad33cc}</Project>
+      <Name>MvcBookStore.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcBookStore.ViewModel\MvcBookStore.ViewModel.csproj">
+      <Project>{dec67c4e-3543-4e05-89fc-e33738f85139}</Project>
+      <Name>MvcBookStore.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
