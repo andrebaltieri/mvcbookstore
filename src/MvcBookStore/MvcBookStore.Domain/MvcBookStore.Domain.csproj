@@ -84,10 +84,13 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
-    <Compile Include="Contracts\IAuthorRepository.cs" />
-    <Compile Include="Contracts\IBookRepository.cs" />
-    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Repositories\IAuthorRepository.cs" />
+    <Compile Include="Repositories\IBookRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAuthorService.cs" />
+    <Compile Include="Services\IBookService.cs" />
+    <Compile Include="Services\IService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

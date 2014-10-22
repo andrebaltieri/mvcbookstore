@@ -1,25 +1,25 @@
-﻿using MvcBookStore.Service.Contracts;
+﻿using MvcBookStore.Domain.Repositories;
 using System.Web.Mvc;
 
 namespace MvcBookStore.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IBookService _service;
+        private IBookRepository _repository;
 
-        public HomeController(IBookService service)
+        public HomeController(IBookRepository repository)
         {
-            this._service = service;
+            this._repository = repository;
         }
 
         public ActionResult Index()
         {
-            return View(_service.GetTopSales());
+            return View(_repository.GetTopSales());
         }
 
         protected override void Dispose(bool disposing)
         {
-            _service.Dispose();
+            _repository.Dispose();
         }
 	}
 }

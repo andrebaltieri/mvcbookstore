@@ -1,6 +1,6 @@
 ﻿using MvcBookStore.Data.DataContexts;
 using MvcBookStore.Domain;
-using MvcBookStore.Domain.Contracts;
+using MvcBookStore.Domain.Repositories;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;

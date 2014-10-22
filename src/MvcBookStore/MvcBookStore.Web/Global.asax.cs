@@ -1,6 +1,4 @@
-﻿using Microsoft.Practices.Unity;
-using MvcBookStore.Data.DataContexts;
-using MvcBookStore.Web.Controllers;
+﻿using MvcBookStore.Data.DataContexts;
 using System;
 using System.Web;
 using System.Web.Mvc;

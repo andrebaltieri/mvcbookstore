@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MvcBookStore.Domain.Contracts
+namespace MvcBookStore.Domain.Repositories
 {
     public interface IRepository<T> : IDisposable
     {

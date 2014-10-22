@@ -1,4 +1,4 @@
-﻿namespace MvcBookStore.Domain.Contracts
+﻿namespace MvcBookStore.Domain.Repositories
 {
     public interface IAuthorRepository : IRepository<Author>
     {

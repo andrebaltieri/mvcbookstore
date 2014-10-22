@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBookStore.Domain", "MvcBookStore.Domain\MvcBookStore.Domain.csproj", "{2E3DD60A-66A8-4288-9C98-1B5249AD9F0F}"
 EndProject
@@ -10,10 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBookStore.Data", "MvcBookStore.Data\MvcBookStore.Data.csproj", "{9B40FDD3-99D8-4CBF-A77D-33D7AF563EAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBookStore.Web", "MvcBookStore.Web\MvcBookStore.Web.csproj", "{ACC5480C-DCCB-4933-B3E5-0A5C83D3FEF8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBookStore.Service", "MvcBookStore.Service\MvcBookStore.Service.csproj", "{2085AD2A-2D1B-441A-BF4E-A44115AD33CC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBookStore.ViewModel", "MvcBookStore.ViewModel\MvcBookStore.ViewModel.csproj", "{DEC67C4E-3543-4E05-89FC-E33738F85139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +33,6 @@ Global
 		{ACC5480C-DCCB-4933-B3E5-0A5C83D3FEF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACC5480C-DCCB-4933-B3E5-0A5C83D3FEF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACC5480C-DCCB-4933-B3E5-0A5C83D3FEF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2085AD2A-2D1B-441A-BF4E-A44115AD33CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2085AD2A-2D1B-441A-BF4E-A44115AD33CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2085AD2A-2D1B-441A-BF4E-A44115AD33CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2085AD2A-2D1B-441A-BF4E-A44115AD33CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEC67C4E-3543-4E05-89FC-E33738F85139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEC67C4E-3543-4E05-89FC-E33738F85139}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEC67C4E-3543-4E05-89FC-E33738F85139}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEC67C4E-3543-4E05-89FC-E33738F85139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
