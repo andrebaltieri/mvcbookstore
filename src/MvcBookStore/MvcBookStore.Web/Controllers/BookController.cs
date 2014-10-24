@@ -12,18 +12,21 @@ namespace MvcBookStore.Web.Controllers
 {
     public class BookController : Controller
     {
-        private IBookRepository _repository;
+        private IBookRepository _bookRepository;
+        private IAuthorRepository _authorRepository;
 
-        public BookController(IBookRepository repository)
+        public BookController(IBookRepository bookRepository, IAuthorRepository authorRepository)
         {
-            this._repository = repository;
+            this._bookRepository = bookRepository;
+            this._authorRepository = authorRepository;
         }
 
+        #region Index
         public ActionResult Index()
         {
             try
             {
-                var result = Mapper.Map<List<Book>, List<DisplayBookShortInfoViewModel>>(_repository.Get().ToList());
+                var result = Mapper.Map<List<Book>, List<DisplayBookShortInfoViewModel>>(_bookRepository.Get().ToList());
                 return View(result);
             }
             catch (Exception ex)
@@ -32,14 +35,28 @@ namespace MvcBookStore.Web.Controllers
                 return View(new List<DisplayBookShortInfoViewModel>());
             }
         }
+        #endregion
 
+        #region Details
+        public ActionResult Details(int id)
+        {
+            var book = _bookRepository.Get(id);
+            if (book == null)
+                return HttpNotFound();
+
+            return View(book);
+        }
+        #endregion
+
+        #region Create
         public ActionResult Create()
         {
+            ViewBag.Authors = _authorRepository.Get();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(CreateBookViewModel model)
+        public ActionResult Create(CreateBookViewModel model, int[] authors)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -59,26 +76,67 @@ namespace MvcBookStore.Web.Controllers
 
             try
             {
+                // Salva a imagem
                 string bookFile = "";
                 var extension = Path.GetExtension(file.FileName);
                 var name = Guid.NewGuid().ToString() + extension;
-                bookFile = "content/img/books/" + name;
+                bookFile = "/content/img/books/" + name;
                 file.SaveAs(Path.Combine(Server.MapPath("~/content/img/books/"), name));
 
+                // Recupera os autores
+                var bookAuthors = _authorRepository.Get(authors);
+
+                // Cria o livro
                 var book = new Book(model.Title, model.ReleaseDate, model.ISBN, bookFile);
-                _repository.SaveOrUpdate(book);
+
+                // Adiciona os Autores
+                book.ClearAuthors();
+                foreach (Author author in bookAuthors)
+                    book.AddAuthor(author);
+
+                // Salva tudo
+                _bookRepository.SaveOrUpdate(book);
                 return RedirectToAction("Edit", new { id = book.Id });
             }
             catch (Exception ex)
             {
+                ViewBag.Authors = _authorRepository.Get();
                 ModelState.AddModelError("DefaultErrorMessage", "Falha ao salvar livro. <br />Detalhes do erro: " + ex.Message);
                 return View(model);
             }
         }
+        #endregion
+
+        #region Delete
+        public ActionResult Delete(int id)
+        {
+            var book = _bookRepository.Get(id);
+            if (book == null)
+                return HttpNotFound();
+
+            return View(book);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(int id)
+        {
+            try
+            {
+                _bookRepository.Delete(id);
+                return RedirectToAction("Index", "Book");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("DefaultErrorMessage", "Falha ao excluir o livroo. <br />Detalhes do erro: " + ex.Message);
+                return View(_bookRepository.Get(id));
+            }
+        }
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
-            _repository.Dispose();
+            _bookRepository.Dispose();
         }
     }
 }

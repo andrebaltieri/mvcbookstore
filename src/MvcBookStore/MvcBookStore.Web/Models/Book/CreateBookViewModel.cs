@@ -20,8 +20,6 @@ namespace MvcBookStore.Web.Models.Book
         [MaxLength(13, ErrorMessage = "Max: 13")]
         public string ISBN { get; set; }
 
-        [Display(Name = "Quantity On Hand")]
-        [Required(ErrorMessage = "*")]
-        public int QuantityOnHand { get; set; }
+        public int[] Authors { get; set; }
     }
 }

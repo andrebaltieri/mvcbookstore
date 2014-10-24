@@ -11,7 +11,7 @@ namespace MvcBookStore.Domain
 
         protected Book() { }
 
-        public Book(string title, string isbn,string image) : this(title, DateTime.Now, isbn, image) { }
+        public Book(string title, string isbn, string image) : this(title, DateTime.Now, isbn, image) { }
 
         public Book(string title, DateTime releaseDate, string isbn, string image)
         {
@@ -37,7 +37,7 @@ namespace MvcBookStore.Domain
         public int QuantityOnHand { get; protected set; }
         public string Image { get; protected set; }
 
-        public ICollection<Author> Authors
+        public virtual ICollection<Author> Authors
         {
             get { return _authors; }
             protected set { _authors = new List<Author>(value); }
@@ -47,6 +47,11 @@ namespace MvcBookStore.Domain
         {
             Contract.Requires<Exception>(author != null, "Autor inválido");
             _authors.Add(author);
+        }
+
+        public void ClearAuthors()
+        {
+            Authors.Clear();
         }
 
         public void UpdateInventory(int quantity)

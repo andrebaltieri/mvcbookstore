@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\css\custom.css" />
+    <Content Include="content\css\select2.css" />
     <Content Include="content\css\themes\bootstrap-superhero.css" />
     <Content Include="content\img\bookmark-icon.png" />
     <Content Include="content\js\bootstrap.js" />
@@ -135,6 +136,7 @@
     <Content Include="content\js\modernizr-2.6.2.js" />
     <Content Include="content\js\respond.js" />
     <Content Include="content\js\respond.min.js" />
+    <Content Include="content\js\select2.js" />
     <Content Include="content\js\startup.js" />
     <None Include="content\js\_references.js" />
     <Content Include="favicon.ico" />
@@ -148,6 +150,8 @@
     <Content Include="Views\Shared\Book\DisplayBookCoverPartial.cshtml" />
     <Content Include="Views\Book\Create.cshtml" />
     <Content Include="content\js\jquery-1.10.2.min.map" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

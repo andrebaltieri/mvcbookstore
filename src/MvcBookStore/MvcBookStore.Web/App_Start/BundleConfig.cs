@@ -14,6 +14,7 @@ namespace MvcBookStore
                         "~/content/js/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                        "~/content/js/select2.js",
                         "~/content/js/startup.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -27,7 +28,8 @@ namespace MvcBookStore
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/content/css/themes/bootstrap-superhero.css",
-                      "~/content/css/custom.css"));
+                      "~/content/css/custom.css",
+                      "~/content/css/select2.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

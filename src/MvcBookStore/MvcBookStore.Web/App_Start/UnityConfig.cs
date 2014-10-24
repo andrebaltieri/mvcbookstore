@@ -1,4 +1,5 @@
 using Microsoft.Practices.Unity;
+using MvcBookStore.Data.DataContexts;
 using MvcBookStore.Data.Repositories;
 using MvcBookStore.Domain.Repositories;
 using System.Web.Mvc;
@@ -11,7 +12,9 @@ namespace MvcBookStore.Web
         public static void RegisterComponents()
         {
 			var container = new UnityContainer();
-            container.RegisterType<IBookRepository, BookRepository>(new HierarchicalLifetimeManager());            
+            container.RegisterType<MvcBookStoreDataContext, MvcBookStoreDataContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IBookRepository, BookRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IAuthorRepository, AuthorRepository>(new HierarchicalLifetimeManager());
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -21,6 +21,11 @@ namespace MvcBookStore.Data.Repositories
             return _db.Authors.ToList();
         }
 
+        public IList<Author> Get(int[] ids)
+        {
+            return _db.Authors.Where(x => ids.Contains(x.Id)).ToList();
+        }
+
         public Author Get(int id)
         {
             return _db.Authors.Find(id);

@@ -1,0 +1,79 @@
+﻿@model MvcBookStore.Domain.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantitySaled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantitySaled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantityOnHand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantityOnHand)
+        </dd>
+
+        <dt>
+            Authors
+        </dt>
+
+        <dd>
+            <ul>
+                @foreach (var author in Model.Authors)
+                {
+                    <li>@author</li>
+                }
+            </ul>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="@Model.Image" alt="@Model.Title" width="120" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
