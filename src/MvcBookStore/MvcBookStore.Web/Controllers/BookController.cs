@@ -4,6 +4,7 @@ using MvcBookStore.Domain.Repositories;
 using MvcBookStore.Web.Models.Book;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -43,9 +44,28 @@ namespace MvcBookStore.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            if (Request.Files.Count == 0)
+            {
+                ModelState.AddModelError("DefaultErrorMessage", "Imagem inválida");
+                return View(model);
+            }
+
+            var file = Request.Files[0];
+            if (file == null || file.ContentLength <= 0)
+            {
+                ModelState.AddModelError("DefaultErrorMessage", "Imagem inválida");
+                return View(model);
+            }
+
             try
             {
-                var book = new Book(model.Title, model.ISBN, model.Image);
+                string bookFile = "";
+                var extension = Path.GetExtension(file.FileName);
+                var name = Guid.NewGuid().ToString() + extension;
+                bookFile = "content/img/books/" + name;
+                file.SaveAs(Path.Combine(Server.MapPath("~/content/img/books/"), name));
+
+                var book = new Book(model.Title, model.ReleaseDate, model.ISBN, bookFile);
                 _repository.SaveOrUpdate(book);
                 return RedirectToAction("Edit", new { id = book.Id });
             }

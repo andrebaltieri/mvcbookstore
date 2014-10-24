@@ -23,9 +23,5 @@ namespace MvcBookStore.Web.Models.Book
         [Display(Name = "Quantity On Hand")]
         [Required(ErrorMessage = "*")]
         public int QuantityOnHand { get; set; }
-
-        [Display(Name = "Image")]
-        [Required(ErrorMessage = "*")]
-        public string Image { get; set; }
     }
 }
