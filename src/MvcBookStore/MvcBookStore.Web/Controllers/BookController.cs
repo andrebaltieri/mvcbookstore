@@ -37,6 +37,25 @@ namespace MvcBookStore.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create(CreateBookViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            try
+            {
+                var book = new Book(model.Title, model.ISBN, model.Image);
+                _repository.SaveOrUpdate(book);
+                return RedirectToAction("Edit", new { id = book.Id });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("DefaultErrorMessage", "Falha ao salvar livro. <br />Detalhes do erro: " + ex.Message);
+                return View(model);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             _repository.Dispose();

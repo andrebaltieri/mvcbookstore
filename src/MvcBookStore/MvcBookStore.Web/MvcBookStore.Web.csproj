@@ -120,25 +120,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\css\custom.css" />
-    <Content Include="content\css\themes\bootstrap-cerulean.min.css" />
-    <Content Include="content\css\themes\bootstrap-cosmo.min.css" />
-    <Content Include="content\css\themes\bootstrap-cyborg.min.css" />
-    <Content Include="content\css\themes\bootstrap-darkly.min.css" />
-    <Content Include="content\css\themes\bootstrap-default.min.css" />
-    <Content Include="content\css\themes\bootstrap-flatly.min.css" />
-    <Content Include="content\css\themes\bootstrap-journal.min.css" />
-    <Content Include="content\css\themes\bootstrap-lumen.min.css" />
-    <Content Include="content\css\themes\bootstrap-paper.min.css" />
-    <Content Include="content\css\themes\bootstrap-readable.min.css" />
-    <Content Include="content\css\themes\bootstrap-sandstone.min.css" />
-    <Content Include="content\css\themes\bootstrap-slate.min.css" />
-    <Content Include="content\css\themes\bootstrap-spacelab.min.css" />
-    <Content Include="content\css\themes\bootstrap-superhero.min.css" />
-    <Content Include="content\css\themes\bootstrap-symplex.min.css" />
-    <Content Include="content\css\themes\bootstrap-united.min.css" />
-    <Content Include="content\css\themes\bootstrap-yeti.min.css" />
+    <Content Include="content\css\themes\bootstrap-superhero.css" />
     <Content Include="content\img\bookmark-icon.png" />
+    <Content Include="content\js\bootstrap.js" />
+    <Content Include="content\js\bootstrap.min.js" />
+    <None Include="content\js\jquery-1.10.2.intellisense.js" />
+    <Content Include="content\js\jquery-1.10.2.js" />
+    <Content Include="content\js\jquery-1.10.2.min.js" />
+    <None Include="content\js\jquery.validate-vsdoc.js" />
+    <Content Include="content\js\jquery.validate.js" />
+    <Content Include="content\js\jquery.validate.min.js" />
+    <Content Include="content\js\jquery.validate.unobtrusive.js" />
+    <Content Include="content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="content\js\modernizr-2.6.2.js" />
+    <Content Include="content\js\respond.js" />
+    <Content Include="content\js\respond.min.js" />
     <Content Include="content\js\startup.js" />
+    <None Include="content\js\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -149,6 +147,7 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Shared\Book\DisplayBookCoverPartial.cshtml" />
     <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="content\js\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DisplatDefaultErrorMessageHelper.cs" />
+    <Compile Include="Models\Book\CreateBookViewModel.cs" />
     <Compile Include="Models\Book\DisplayBookShortInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC Book Store</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/content/css/themes/bootstrap-superhero.min.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
@@ -33,12 +34,13 @@
     <div class="container" role="main">
         <br />
         <br /><br />
-        @DisplatDefaultErrorMessageHelper.DisplatDefaultErrorMessage(ViewData.ModelState.Values)
+        @DisplatDefaultErrorMessageHelper.DisplatDefaultErrorMessage(ViewData.ModelState)
         @RenderBody()
     </div>
 
-    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    @RenderSection("scripts", false)
+    @Scripts.Render("~/bundles/jquery")    
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
