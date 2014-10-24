@@ -1,4 +1,7 @@
-﻿using MvcBookStore.Data.DataContexts;
+﻿using AutoMapper;
+using MvcBookStore.Data.DataContexts;
+using MvcBookStore.Domain;
+using MvcBookStore.Web.Models.Book;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +19,9 @@ namespace MvcBookStore.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Mapper.CreateMap<Book, DisplayBookShortInfoViewModel>();
+            Mapper.AssertConfigurationIsValid();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

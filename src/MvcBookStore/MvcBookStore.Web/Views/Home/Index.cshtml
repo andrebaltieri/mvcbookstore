@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcBookStore.ViewModel.Book.DisplayBookShortInfoViewModel>
+﻿@model IEnumerable<MvcBookStore.Web.Models.Book.DisplayBookShortInfoViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -17,6 +17,7 @@
 </div>
 <hr />
 <h2>Best Sellers</h2>
+
 <ol class="list-unstyled">
     @foreach (var book in Model)
     {

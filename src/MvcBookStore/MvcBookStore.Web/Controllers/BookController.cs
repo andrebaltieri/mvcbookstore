@@ -1,4 +1,10 @@
-﻿using MvcBookStore.Domain.Repositories;
+﻿using AutoMapper;
+using MvcBookStore.Domain;
+using MvcBookStore.Domain.Repositories;
+using MvcBookStore.Web.Models.Book;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace MvcBookStore.Web.Controllers
@@ -14,7 +20,16 @@ namespace MvcBookStore.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(_repository.Get());
+            try
+            {
+                var result = Mapper.Map<List<Book>, List<DisplayBookShortInfoViewModel>>(_repository.Get().ToList());
+                return View(result);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("DefaultErrorMessage", "Falha ao recuperar os livros. <br />Detalhes do erro: " + ex.Message);
+                return View(new List<DisplayBookShortInfoViewModel>());
+            }
         }
 
         public ActionResult Create()
