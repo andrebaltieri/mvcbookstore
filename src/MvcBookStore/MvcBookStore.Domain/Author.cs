@@ -8,8 +8,6 @@ namespace MvcBookStore.Domain
 {
     public class Author
     {
-        private IList<Book> _books;
-
         protected Author() { }
 
         public Author(string name, string bio)
@@ -20,23 +18,19 @@ namespace MvcBookStore.Domain
             this.Id = 0;
             this.Name = name;
             this.Bio = bio;
-            this._books = new List<Book>();
+            this.Books = new List<Book>();
         }
 
-        public int Id { get; protected set; }
-        public string Name { get; protected set; }
-        public string Bio { get; protected set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Bio { get; set; }
 
-        public virtual ICollection<Book> Books
-        {
-            get { return _books; }
-            protected set { _books = new List<Book>(value); }
-        }
+        public virtual ICollection<Book> Books { get; set; }
 
         public void AddBook(Book book)
         {
             Contract.Requires<Exception>(book != null, "Livro inválido");
-            _books.Add(book);
+            Books.Add(book);
         }
 
         public override string ToString()

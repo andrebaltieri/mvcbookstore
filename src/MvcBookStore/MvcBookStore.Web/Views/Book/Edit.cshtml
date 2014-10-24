@@ -4,13 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-@using (Html.BeginForm("Create", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    @Html.Partial("Partials/_EditorPartial")
+    @Html.HiddenFor(x => x.Id);
+
+    @Html.Partial("Partials/_EditorPartial", Model)
 }
 
 <div>

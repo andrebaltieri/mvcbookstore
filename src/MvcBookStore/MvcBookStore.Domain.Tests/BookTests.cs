@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MvcBookStore.Domain.Repositories;
 
 namespace MvcBookStore.Domain.Tests
 {

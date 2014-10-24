@@ -21,6 +21,7 @@ namespace MvcBookStore.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Mapper.CreateMap<Book, DisplayBookShortInfoViewModel>();
+            Mapper.CreateMap<Book, EditorBookViewModel>();
             Mapper.AssertConfigurationIsValid();
         }
 

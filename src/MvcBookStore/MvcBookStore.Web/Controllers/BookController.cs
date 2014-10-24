@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace MvcBookStore.Web.Controllers
 {
@@ -56,7 +57,7 @@ namespace MvcBookStore.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateBookViewModel model, int[] authors)
+        public ActionResult Create(EditorBookViewModel model, int[] authors)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -97,6 +98,78 @@ namespace MvcBookStore.Web.Controllers
                 // Salva tudo
                 _bookRepository.SaveOrUpdate(book);
                 return RedirectToAction("Edit", new { id = book.Id });
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Authors = _authorRepository.Get();
+                ModelState.AddModelError("DefaultErrorMessage", "Falha ao salvar livro. <br />Detalhes do erro: " + ex.Message);
+                return View(model);
+            }
+        }
+        #endregion
+
+        #region Edit
+        public ActionResult Edit(int id)
+        {
+            var book = _bookRepository.Get(id);
+            var model = Mapper.Map<Book, EditorBookViewModel>(book);
+            if (book == null)
+                return HttpNotFound();
+
+            ViewBag.Authors = _authorRepository.Get();
+            ViewBag.SelectedAuthors = book.Authors;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditorBookViewModel model, int[] authors)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Authors = _authorRepository.Get();
+                return View(model);
+            }                
+
+            if (Request.Files.Count == 0)
+            {
+                ViewBag.Authors = _authorRepository.Get();
+                ModelState.AddModelError("DefaultErrorMessage", "Imagem inválida");
+                return View(model);
+            }
+
+            var file = Request.Files[0];
+            if (file == null || file.ContentLength <= 0)
+            {
+                ViewBag.Authors = _authorRepository.Get();
+                ModelState.AddModelError("DefaultErrorMessage", "Imagem inválida");
+                return View(model);
+            }
+
+            try
+            {
+                // Salva a imagem
+                string bookFile = "";
+                var extension = Path.GetExtension(file.FileName);
+                var name = Guid.NewGuid().ToString() + extension;
+                bookFile = "/content/img/books/" + name;
+                file.SaveAs(Path.Combine(Server.MapPath("~/content/img/books/"), name));
+
+                // Recupera o livro
+                var book = _bookRepository.Get(model.Id);
+                book.Title = model.Title;
+                book.Image = bookFile;
+                book.ISBN = model.ISBN;
+                book.ReleaseDate = model.ReleaseDate;
+
+                // Adiciona os Autores
+                var bookAuthors = _authorRepository.Get(authors);
+                book.ClearAuthors();
+                foreach (Author author in bookAuthors)
+                    book.AddAuthor(author);
+
+                // Salva tudo
+                _bookRepository.SaveOrUpdate(book);
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

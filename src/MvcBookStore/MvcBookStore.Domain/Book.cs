@@ -7,8 +7,6 @@ namespace MvcBookStore.Domain
 {
     public class Book
     {
-        private IList<Author> _authors;
-
         protected Book() { }
 
         public Book(string title, string isbn, string image) : this(title, DateTime.Now, isbn, image) { }
@@ -26,27 +24,23 @@ namespace MvcBookStore.Domain
             this.ReleaseDate = releaseDate;
             this.ISBN = isbn;
             this.Image = image;
-            this._authors = new List<Author>();
+            this.Authors = new List<Author>();
         }
 
-        public int Id { get; protected set; }
-        public string Title { get; protected set; }
-        public DateTime ReleaseDate { get; protected set; }
-        public string ISBN { get; protected set; }
-        public int QuantitySaled { get; protected set; }
-        public int QuantityOnHand { get; protected set; }
-        public string Image { get; protected set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public string ISBN { get; set; }
+        public int QuantitySaled { get; set; }
+        public int QuantityOnHand { get; set; }
+        public string Image { get; set; }
 
-        public virtual ICollection<Author> Authors
-        {
-            get { return _authors; }
-            protected set { _authors = new List<Author>(value); }
-        }
+        public virtual ICollection<Author> Authors { get; set; }
 
         public void AddAuthor(Author author)
         {
             Contract.Requires<Exception>(author != null, "Autor inválido");
-            _authors.Add(author);
+            Authors.Add(author);
         }
 
         public void ClearAuthors()

@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MvcBookStore.Data\MvcBookStore.Data.csproj">
+      <Project>{9b40fdd3-99d8-4cbf-a77d-33d7af563eaa}</Project>
+      <Name>MvcBookStore.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvcBookStore.Domain\MvcBookStore.Domain.csproj">
       <Project>{2e3dd60a-66a8-4288-9c98-1b5249ad9f0f}</Project>
       <Name>MvcBookStore.Domain</Name>

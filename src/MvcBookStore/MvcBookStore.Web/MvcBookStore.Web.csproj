@@ -152,6 +152,8 @@
     <Content Include="content\js\jquery-1.10.2.min.map" />
     <Content Include="Views\Book\Delete.cshtml" />
     <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Partials\_EditorPartial.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -174,7 +176,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DisplatDefaultErrorMessageHelper.cs" />
-    <Compile Include="Models\Book\CreateBookViewModel.cs" />
+    <Compile Include="Models\Book\EditorBookViewModel.cs" />
     <Compile Include="Models\Book\DisplayBookShortInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
